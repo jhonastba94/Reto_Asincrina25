@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "DEMO27-ANGULAR": {
+    "demo19-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/demo27-angular",
+            "outputPath": "dist/demo19-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,12 +25,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              ],
+              "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              ]
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -60,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "DEMO27-ANGULAR:build:production"
+              "browserTarget": "demo19-angular:build:production"
             },
             "development": {
-              "browserTarget": "DEMO27-ANGULAR:build:development"
+              "browserTarget": "demo19-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "DEMO27-ANGULAR:build"
+            "browserTarget": "demo19-angular:build"
           }
         },
         "test": {
@@ -94,5 +103,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "102dc0fd-87ac-46eb-9b16-00456dbfba8c"
   }
 }
